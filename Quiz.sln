@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGenerator", "QuizGenerator\QuizGenerator.csproj", "{5A689412-06A5-4986-B26E-CC22954F2302}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz", "Quiz\Quiz.csproj", "{92AAD814-6F74-4B5C-BBFA-47C72D8FEE56}"
 EndProject
 Global
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A689412-06A5-4986-B26E-CC22954F2302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A689412-06A5-4986-B26E-CC22954F2302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A689412-06A5-4986-B26E-CC22954F2302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A689412-06A5-4986-B26E-CC22954F2302}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92AAD814-6F74-4B5C-BBFA-47C72D8FEE56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92AAD814-6F74-4B5C-BBFA-47C72D8FEE56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92AAD814-6F74-4B5C-BBFA-47C72D8FEE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
