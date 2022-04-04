@@ -5,8 +5,148 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quiz"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Quiz" 
+        Height="800" 
+        Width="960"
+        Background="#ECF0F1"
+        FontFamily="Roboto"
+        ResizeMode="NoResize"
+        >
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Margin" Value="0 5 0 5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#2ECC71"/>
+
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            Margin="10"
+            >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                Foreground="#2ECC71"
+                FontSize="32"
+                FontWeight="Bold"
+                Name="Timer"
+                >
+                00:00
+            </TextBlock>
+
+            <TextBlock
+                Grid.Column="1"
+                FontSize="24"
+                Name="Title"
+                >
+                Test wiedzy o Karcewiczu
+            </TextBlock>
+        </Grid>
+
+        <Grid
+            Grid.Row="1"
+            Margin="10"
+            >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                >
+                <TextBlock
+                    FontSize="32"
+                    >
+                    Pytanie:
+                </TextBlock>
+
+                <TextBlock
+                    FontSize="32"
+                    FontWeight="Bold"
+                    Name="CurrentQuestion"
+                    >
+                    5/21
+                </TextBlock>
+
+                <Button
+                    Width="189"
+                    Height="62"
+                    Background="#2ECC71"
+                    Foreground="#FFFFFF"
+                    FontSize="24"
+                    Name="NextButton"
+                    BorderThickness="0"
+                    >
+                    <Button.Effect>
+                        <DropShadowEffect
+                            Direction="-90"
+                            Opacity="0.3"
+                            BlurRadius="10"
+                            ShadowDepth="2"
+                            RenderingBias="Quality"
+                            >
+                        </DropShadowEffect>
+                    </Button.Effect>
+
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    Dalej
+                </Button>
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                >
+                <TextBlock
+                    FontSize="24"
+                    FontWeight="Bold"
+                    TextWrapping="Wrap"
+                    Margin="0 0 0 10"
+                    >
+                    Jak najczęściej Karcewicz odnosi się do programistów?
+                </TextBlock>
+
+                <ListBox
+                    Name="Answers"
+                    Background="#ECF0F1"
+                    BorderThickness="0"
+                    SelectionMode="Multiple"
+                    >
+                    <ListBoxItem></ListBoxItem>
+                    <ListBoxItem></ListBoxItem>
+                    <ListBoxItem></ListBoxItem>
+                    <ListBoxItem></ListBoxItem>
+                </ListBox>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
