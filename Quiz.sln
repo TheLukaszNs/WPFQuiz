@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizGenerator", "QuizGenerator\QuizGenerator.csproj", "{5A689412-06A5-4986-B26E-CC22954F2302}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz", "Quiz\Quiz.csproj", "{92AAD814-6F74-4B5C-BBFA-47C72D8FEE56}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizSolver", "Quiz\QuizSolver.csproj", "{92AAD814-6F74-4B5C-BBFA-47C72D8FEE56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
