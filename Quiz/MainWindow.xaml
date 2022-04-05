@@ -1,4 +1,4 @@
-﻿<Window x:Class="Quiz.MainWindow"
+﻿<Window x:Class="QuizSolver.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,13 +16,15 @@
         <Style TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
 
         <Style TargetType="ListBoxItem">
             <Setter Property="Height" Value="100"/>
             <Setter Property="Margin" Value="0 5 0 5"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="BorderBrush" Value="#2ECC71"/>
+            <Setter Property="FontSize" Value="24"/>
 
             <Style.Resources>
                 <Style TargetType="Border">
@@ -54,7 +56,6 @@
                 FontWeight="Bold"
                 Name="Timer"
                 >
-                00:00
             </TextBlock>
 
             <TextBlock
@@ -62,7 +63,6 @@
                 FontSize="24"
                 Name="Title"
                 >
-                Test wiedzy o Karcewiczu
             </TextBlock>
         </Grid>
 
@@ -90,7 +90,6 @@
                     FontWeight="Bold"
                     Name="CurrentQuestion"
                     >
-                    5/21
                 </TextBlock>
 
                 <Button
@@ -101,6 +100,7 @@
                     FontSize="24"
                     Name="NextButton"
                     BorderThickness="0"
+                    Click="NextButton_Click"
                     >
                     <Button.Effect>
                         <DropShadowEffect
@@ -127,12 +127,11 @@
                 VerticalAlignment="Center"
                 >
                 <TextBlock
+                    Name="Content"
                     FontSize="24"
                     FontWeight="Bold"
-                    TextWrapping="Wrap"
                     Margin="0 0 0 10"
                     >
-                    Jak najczęściej Karcewicz odnosi się do programistów?
                 </TextBlock>
 
                 <ListBox
@@ -141,10 +140,6 @@
                     BorderThickness="0"
                     SelectionMode="Multiple"
                     >
-                    <ListBoxItem></ListBoxItem>
-                    <ListBoxItem></ListBoxItem>
-                    <ListBoxItem></ListBoxItem>
-                    <ListBoxItem></ListBoxItem>
                 </ListBox>
             </StackPanel>
         </Grid>
