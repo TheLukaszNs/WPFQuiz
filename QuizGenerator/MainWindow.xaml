@@ -5,8 +5,108 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Background="#ECF0F1"
+        FontFamily="Roboto"
+        Title="MainWindow" Height="800" Width="960">
+    <Window.Resources>
+        <DropShadowEffect 
+          x:Key="DropShadow" 
+          Direction="-90" 
+          RenderingBias="Quality" BlurRadius="10" Opacity="0.3" ShadowDepth="2" />
+        <Style x:Key="RoundedButton" TargetType="Button">
+            <Setter Property="Background" Value="#2ECC71" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="10, 18" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Effect" Value="{StaticResource DropShadow}" />
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+  <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="10*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Center"
+          FontSize="32"
+          FontWeight="Bold">Generator Quiz'u</TextBlock>
+        <Grid 
+          Grid.Row="1"
+          >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+              VerticalAlignment="Center"
+              Margin="20, 0"
+              >
+                <TextBlock FontSize="24" TextAlignment="Center" Margin="0,0,0,30">
+                  dodano 
+                  <TextBlock FontWeight="Bold">0</TextBlock>
+                  pytań
+                </TextBlock>
+                <StackPanel>
+                  <Button 
+                    Style="{StaticResource RoundedButton}" 
+                    Content="Dodaj"
+                    Click="Button_Add_Click"/>
+                    <Border Margin="10" />
+                    <Button 
+                    Style="{StaticResource RoundedButton}"
+                    Content="Zapisz"
+                    Background="#3498db"
+                    Grid.Row="2"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel
+              VerticalAlignment="Center"
+              Margin="20, 0"
+              Grid.Column="1">
+                <StackPanel Margin="0,0,0,20">
+                    <Label 
+                      Content="Pytanie" 
+                      FontSize="18"
+                      FontWeight="Bold"
+                      Margin="0,0,0,15"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                      <TextBox 
+                        Background="Transparent"
+                        VerticalAlignment="Center"
+                        BorderThickness="0,0,0,2"
+                        Padding="5"
+                        BorderBrush="#2ECC71"
+                        FontSize="18"
+                        FontWeight="Medium"
+                        x:Name="TextBox_QuestionTitle"/>
+                      <TextBlock 
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="Medium"
+                        Margin="10,0,0,0">?</TextBlock>
+                    </Grid>
+                </StackPanel>
+                <local:QuizAnswer Letter="A" x:Name="QuizAnswer_A" />
+              <local:QuizAnswer Letter="B" x:Name="QuizAnswer_B" />
+              <local:QuizAnswer Letter="C" x:Name="QuizAnswer_C" />
+              <local:QuizAnswer Letter="D" x:Name="QuizAnswer_D" />
+            </StackPanel>
+        </Grid>
         
     </Grid>
 </Window>

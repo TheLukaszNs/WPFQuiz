@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.Json;
 
 namespace QuizGenerator
 {
@@ -20,9 +21,29 @@ namespace QuizGenerator
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<QuizAnswer> _answerComponents = new List<QuizAnswer>();
+        private Quiz _quiz = new Quiz();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _answerComponents.AddRange(new List<QuizAnswer>() { QuizAnswer_A, QuizAnswer_B, QuizAnswer_C, QuizAnswer_D });
+        }
+
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
+        {
+            var question = new Question();
+            question.Text = TextBox_QuestionTitle.Text;
+
+            foreach (var quizAnswer in _answerComponents)
+            {
+                question.Answers.Add(quizAnswer.ToAnswer());
+            }
+
+            _quiz.Questions.Add(question);
+
+            MessageBox.Show(JsonSerializer.Serialize(_quiz));
         }
     }
 }
