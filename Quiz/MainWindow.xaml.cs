@@ -32,7 +32,8 @@ namespace QuizSolver
         {
             InitializeComponent();
 
-            quiz = new Quiz("Test o wszystkim i o niczym");
+            quiz = new Quiz();
+            quiz.Title = "Test wiedzy o wszystkim i o niczym.";
             Title.Text = quiz.Title;
             _Score = 0;
             _CurrentQuestion = 0;
