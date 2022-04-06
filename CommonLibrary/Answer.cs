@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuizGenerator
+namespace CommonLibrary
 {
     public class Answer
     {
@@ -13,7 +13,7 @@ namespace QuizGenerator
 
         public Answer(string text, bool isCorrect)
         {
-            Text = text;
+            Content = text;
             IsCorrect = isCorrect;
         }
 
