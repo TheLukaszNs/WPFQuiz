@@ -11,6 +11,6 @@ namespace CommonLibrary
         public string Content { get; set; }
 
         private List<Answer> answers = new List<Answer>();
-        public List<Answer> Answers { get => answers; set => answers = value; 
+        public List<Answer> Answers { get => answers; set => answers = value; } 
     }
 }
