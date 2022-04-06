@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CommonLibrary
 {
-    internal interface ISerializer
+    public interface ISerializer<T, V>
     {
-
+        T Serialize(V data);
+        V Deserialize(T data);
     }
 }

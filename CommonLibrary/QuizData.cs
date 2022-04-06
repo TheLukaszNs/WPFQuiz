@@ -8,9 +8,10 @@ namespace CommonLibrary
 {
     public static class QuizData
     {
-        public static void SaveEncode(ICoder<string> coder, object data)
+        public static void SaveEncode(ISerializer<string, Quiz> serializer, ICoder<string> coder, Quiz data)
         {
-            //string encoded = coder.Encode();
+            var serialized = serializer.Serialize(data);
+            var coded = coder.Encode(serialized);
         }
     }
 }
