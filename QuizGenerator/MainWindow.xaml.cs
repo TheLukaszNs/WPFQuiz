@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.Json;
+using CommonLibrary;
 
 namespace QuizGenerator
 {
@@ -34,7 +35,7 @@ namespace QuizGenerator
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
             var question = new Question();
-            question.Text = TextBox_QuestionTitle.Text;
+            question.Content = TextBox_QuestionTitle.Text;
 
             foreach (var quizAnswer in _answerComponents)
             {
@@ -43,7 +44,10 @@ namespace QuizGenerator
 
             _quiz.Questions.Add(question);
 
-            MessageBox.Show(JsonSerializer.Serialize(_quiz));
+            var coder = new CommonLibrary.Base64Coder();
+            var data = coder.Encode(JsonSerializer.Serialize(_quiz));
+
+            MessageBox.Show(coder.Decode(data));
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace QuizGenerator
 {
-    internal class Question
+    public class Question
     {
-        public string Text { get; set; }
+        public string Content { get; set; }
 
         private List<Answer> answers = new List<Answer>();
         public List<Answer> Answers { get => answers; set => answers = value; }
