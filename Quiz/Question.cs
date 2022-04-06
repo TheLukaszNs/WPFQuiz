@@ -10,13 +10,11 @@ namespace QuizSolver
     {
         public string Content { get; set; }
         public List<Answer> Answers { get; set; }
-        public List<Answer> SelectedAnswers { get; set; }
 
         public Question(string content, List<Answer> answers)
         {
             Content = content;
             Answers = answers;
-            SelectedAnswers = new List<Answer>();
         }
     }
 }

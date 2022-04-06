@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace QuizSolver
 {
@@ -20,6 +21,8 @@ namespace QuizSolver
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DispatcherTimer timer;
+        private TimeSpan time;
         private Quiz quiz;
         private int _Score { get; set; }
         private int _CurrentQuestion { get; set; }
@@ -33,7 +36,27 @@ namespace QuizSolver
             _Score = 0;
             _CurrentQuestion = 0;
 
+            TimerStart();
             DisplayQuestion();
+        }
+
+        private void TimerStart()
+        {
+            time = TimeSpan.FromSeconds(90);
+            timer = new DispatcherTimer();
+            timer.Tick += new EventHandler(TimerTick);
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            Timer.Text = $"{time.Minutes}:{time.Seconds}";
+
+            if (time == TimeSpan.Zero)
+                timer.Stop();
+            else
+                time = time.Subtract(TimeSpan.FromSeconds(1));
         }
 
         private void DisplayQuestion()
@@ -47,9 +70,7 @@ namespace QuizSolver
 
         private void UpdateScore()
         {
-            quiz.Questions[_CurrentQuestion].SelectedAnswers.AddRange(Answers.SelectedItems.Cast<Answer>());
-
-            foreach (Answer a in quiz.Questions[_CurrentQuestion].SelectedAnswers)
+            foreach (Answer a in Answers.SelectedItems)
             {
                 if (a.IsCorrect)
                     _Score++;
