@@ -8,140 +8,14 @@
         Title="Quiz" 
         Height="800" 
         Width="960"
-        Background="#ECF0F1"
-        FontFamily="Roboto"
         ResizeMode="NoResize"
         >
-    <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-        </Style>
-
-        <Style TargetType="ListBoxItem">
-            <Setter Property="Height" Value="100"/>
-            <Setter Property="Margin" Value="0 5 0 5"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="#2ECC71"/>
-            <Setter Property="FontSize" Value="24"/>
-
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Style.Resources>
-        </Style>
-    </Window.Resources>
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="10*"></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <Grid
-            Grid.Row="0"
-            Margin="10"
-            >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock
-                Grid.Column="0"
-                Foreground="#2ECC71"
-                FontSize="32"
-                FontWeight="Bold"
-                Name="Timer"
-                >
-            </TextBlock>
-
-            <TextBlock
-                Grid.Column="1"
-                FontSize="24"
-                Name="Title"
-                >
-            </TextBlock>
-        </Grid>
-
-        <Grid
-            Grid.Row="1"
-            Margin="10"
-            >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel
-                Grid.Column="0"
-                VerticalAlignment="Center"
-                >
-                <TextBlock
-                    FontSize="32"
-                    >
-                    Pytanie:
-                </TextBlock>
-
-                <TextBlock
-                    FontSize="32"
-                    FontWeight="Bold"
-                    Name="CurrentQuestion"
-                    >
-                </TextBlock>
-
-                <Button
-                    Width="189"
-                    Height="62"
-                    Background="#2ECC71"
-                    Foreground="#FFFFFF"
-                    FontSize="24"
-                    Name="NextButton"
-                    BorderThickness="0"
-                    Click="NextButton_Click"
-                    >
-                    <Button.Effect>
-                        <DropShadowEffect
-                            Direction="-90"
-                            Opacity="0.3"
-                            BlurRadius="10"
-                            ShadowDepth="2"
-                            RenderingBias="Quality"
-                            >
-                        </DropShadowEffect>
-                    </Button.Effect>
-
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </Button.Resources>
-                    Dalej
-                </Button>
-            </StackPanel>
-
-            <StackPanel
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                >
-                <TextBlock
-                    Name="Content"
-                    FontSize="24"
-                    FontWeight="Bold"
-                    Margin="0 0 0 10"
-                    >
-                </TextBlock>
-
-                <ListBox
-                    Name="Answers"
-                    Background="#ECF0F1"
-                    BorderThickness="0"
-                    SelectionMode="Multiple"
-                    >
-                </ListBox>
-            </StackPanel>
-        </Grid>
-    </Grid>
+    <Frame
+        Width="960"
+        Height="800"
+        Source="StartPage.xaml"
+        NavigationUIVisibility="Hidden"
+        >
+        
+    </Frame>
 </Window>

@@ -12,19 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
-using CommonLibrary;
 
 namespace QuizSolver
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy StartPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StartPage : Page
     {
-        public MainWindow()
+        public StartPage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new QuizPage());
+        }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

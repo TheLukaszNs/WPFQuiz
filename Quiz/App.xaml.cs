@@ -13,5 +13,6 @@ namespace QuizSolver
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
