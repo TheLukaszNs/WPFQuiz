@@ -27,5 +27,24 @@ namespace CommonLibrary
 
             return true;
         }
+
+        public static Quiz LoadDecode(ISerializer<Quiz> serializer, ICoder<string> coder, string path)
+        {
+            string encoded = "";
+            
+            try
+            {
+                using (StreamReader inputFile = new StreamReader(path))
+                    encoded = inputFile.ReadToEnd();
+            }
+            catch
+            {
+                return null;
+            }
+
+            string serialized = coder.Decode(encoded);
+            
+            return serializer.Deserialize(serialized);
+        }
     }
 }

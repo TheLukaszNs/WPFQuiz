@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using CommonLibrary;
 
@@ -48,7 +39,7 @@ namespace QuizSolver
 
         private void TimerStart()
         {
-            time = TimeSpan.FromSeconds(20);
+            time = TimeSpan.FromSeconds(quiz.Duration);
             timer = new DispatcherTimer();
             timer.Tick += new EventHandler(TimerTick);
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -97,11 +88,6 @@ namespace QuizSolver
                     _Score--;
             }
         }
-        
-        private void ClearAnswers()
-        {
-            
-        }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
@@ -118,9 +104,6 @@ namespace QuizSolver
                 ChangeScreen();
         }
 
-        private void ChangeScreen()
-        {
-            NavigationService.Navigate(new OverviewPage(quiz, _Score, correctedCount, selectedAnswers));
-        }
+        private void ChangeScreen() => NavigationService.Navigate(new OverviewPage(quiz, _Score, correctedCount, selectedAnswers));
     }
 }
