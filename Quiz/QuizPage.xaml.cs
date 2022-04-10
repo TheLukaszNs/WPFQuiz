@@ -27,17 +27,20 @@ namespace QuizSolver
         private Quiz quiz;
         private int _Score { get; set; }
         private int _CurrentQuestion { get; set; }
-        private uint correctedCount = 0;
+        private uint correctedCount;
+        private List<Answer> selectedAnswers;
 
-        public QuizPage()
+        public QuizPage(Quiz quiz)
         {
+            this.quiz = quiz;
+
             InitializeComponent();
 
-            quiz = new Quiz();
-            quiz.Title = "Test wiedzy o wszystkim i o niczym.";
-            Title.Text = quiz.Title;
+            Title.Text = this.quiz.Title;
             _Score = 0;
             _CurrentQuestion = 0;
+            correctedCount = 0;
+            selectedAnswers = new List<Answer>();
 
             TimerStart();
             DisplayQuestion();
@@ -45,7 +48,7 @@ namespace QuizSolver
 
         private void TimerStart()
         {
-            time = TimeSpan.FromSeconds(90);
+            time = TimeSpan.FromSeconds(20);
             timer = new DispatcherTimer();
             timer.Tick += new EventHandler(TimerTick);
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -54,7 +57,7 @@ namespace QuizSolver
 
         private void TimerTick(object sender, EventArgs e)
         {
-            Timer.Text = $"{time.Minutes}:{time.Seconds}";
+            Timer.Text = time.ToString("mm\\:ss");
 
             if (time == TimeSpan.Zero)
             { 
@@ -68,30 +71,41 @@ namespace QuizSolver
 
         private void DisplayQuestion()
         {
-            CurrentQuestion.Text = $"{_CurrentQuestion + 1}/{quiz.Questions.Count}";
-            //Content.Text = quiz.Questions[_CurrentQuestion].Content;
+            Answers.Items.Clear();
 
-            //foreach (Answer a in quiz.Questions[_CurrentQuestion].Answers)
-                //Answers.Items.Add(a);
+            CurrentQuestion.Text = $"{_CurrentQuestion + 1}/{quiz.Questions.Count}";
+            Content.Text = quiz.Questions[_CurrentQuestion].Content;
+
+            foreach (Answer a in quiz.Questions[_CurrentQuestion].Answers)
+            { 
+                Answers.Items.Add(a);
+
+                if (a.IsCorrect)
+                    correctedCount++;
+            }
         }
 
         private void UpdateScore()
         {
             foreach (Answer a in Answers.SelectedItems)
             {
+                selectedAnswers.Add(a);
+
                 if (a.IsCorrect)
-                {
                     _Score++;
-                    correctedCount++;
-                }
                 else
                     _Score--;
             }
         }
+        
+        private void ClearAnswers()
+        {
+            
+        }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            // UpdateScore();
+            UpdateScore();
 
             if (_CurrentQuestion + 1 < quiz.Questions.Count)
             {
@@ -106,7 +120,7 @@ namespace QuizSolver
 
         private void ChangeScreen()
         {
-            NavigationService.Navigate(new OverviewPage(quiz, _Score, correctedCount));
+            NavigationService.Navigate(new OverviewPage(quiz, _Score, correctedCount, selectedAnswers));
         }
     }
 }

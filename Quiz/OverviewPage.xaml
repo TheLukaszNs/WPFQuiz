@@ -19,6 +19,21 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Height" Value="62"/>
+            <Setter Property="Margin" Value="0 5 0 5"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#000000"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
     </Page.Resources>
     
     <Grid>
@@ -28,9 +43,10 @@
         </Grid.RowDefinitions>
 
         <TextBlock
-            Grid.Column="1"
-            FontSize="24"
+            Grid.Row="0"
+            FontSize="42"
             Name="Title"
+            FontWeight="Bold"
             >
             Podsumowanie
         </TextBlock>
@@ -38,6 +54,7 @@
         <StackPanel
             Grid.Row="1"
             VerticalAlignment="Center"
+            Margin="10"
             >
 
             <TextBlock
@@ -50,12 +67,15 @@
                 >
             </TextBlock>
 
-            <ItemsControl
+            <ListBox
                 Name="Summary"
                 Background="#ECF0F1"
                 BorderThickness="0"
+                VerticalAlignment="Center"
+                Width="700"
+                MaxHeight="362"
                 >
-            </ItemsControl>
+            </ListBox>
 
             <Button
                 Width="189"

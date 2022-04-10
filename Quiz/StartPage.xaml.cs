@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 
 namespace QuizSolver
 {
@@ -27,7 +29,19 @@ namespace QuizSolver
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new QuizPage());
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.FileName = "Quizdata";
+            openFileDialog.DefaultExt = ".quiz";
+            openFileDialog.Filter = "Quiz files (*.quiz)|*.quiz";
+
+            Nullable<bool> result = openFileDialog.ShowDialog();
+
+            if (result == true)
+            { 
+                string filename = openFileDialog.FileName;
+
+                NavigationService.Navigate(new QuizPage());
+            }
         }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
