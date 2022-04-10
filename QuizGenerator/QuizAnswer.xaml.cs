@@ -42,7 +42,7 @@ namespace QuizGenerator
             InitializeComponent();
         }
 
-        public Answer ToAnswer() => new Answer(AnswerContent, IsCorrect ?? false);
+        public Answer ToAnswer() => new Answer { Content = AnswerContent, IsCorrect = IsCorrect ?? false};
 
         public void Reset()
         {

@@ -11,12 +11,6 @@ namespace CommonLibrary
         public string Content { get; set; }
         public bool IsCorrect { get; set; }
 
-        public Answer(string text, bool isCorrect)
-        {
-            Content = text;
-            IsCorrect = isCorrect;
-        }
-
         public override string ToString()
         {
             return Content;
