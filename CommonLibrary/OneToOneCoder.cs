@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CommonLibrary
 {
-    internal class OneToOneCoder : ICoder<string>
+    public class OneToOneCoder : ICoder<string>
     {
         public string Decode(string data) => data;
 

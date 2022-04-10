@@ -1,0 +1,28 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:QuizGenerator">
+
+    <local:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+
+    <Style TargetType="{x:Type local:EnforceTypeTextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Template">
+          <Setter.Value>
+                <ControlTemplate TargetType="local:EnforceTypeTextBox">
+                    <Border
+                      x:Name="PART_ContentHost"
+                      Background="Transparent"
+                      Padding="{TemplateBinding Padding}"
+                      BorderBrush="{TemplateBinding BorderBrush}"
+                      BorderThickness="0,0,0,2">
+                        <Border.ToolTip>
+                            <ToolTip 
+                              Visibility="{TemplateBinding Error, Converter={StaticResource StringToVisibilityConverter}}"
+                              Content="{TemplateBinding Error}"/>
+                        </Border.ToolTip>
+                    </Border>
+                </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

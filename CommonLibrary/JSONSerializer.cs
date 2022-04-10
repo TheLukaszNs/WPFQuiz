@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace CommonLibrary
 {
-    internal class JSONSerializer<T> : ISerializer<T>
+    public class JSONSerializer<T> : ISerializer<T>
     {
         public string Serialize(T data)
         {

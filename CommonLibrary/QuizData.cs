@@ -3,15 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 
 namespace CommonLibrary
 {
     public static class QuizData
     {
-        public static void SaveEncode(ISerializer<string, Quiz> serializer, ICoder<string> coder, Quiz data)
+        public static bool SaveEncode(ISerializer<Quiz> serializer, ICoder<string> coder, Quiz data, string path)
         {
-            var serialized = serializer.Serialize(data);
-            var coded = coder.Encode(serialized);
+            string serialized = serializer.Serialize(data);
+            string encoded = coder.Encode(serialized);
+
+            try
+            {
+                using (StreamWriter outputFile = new StreamWriter(path))
+                    outputFile.Write(encoded);
+            } 
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -43,5 +43,11 @@ namespace QuizGenerator
         }
 
         public Answer ToAnswer() => new Answer(AnswerContent, IsCorrect ?? false);
+
+        public void Reset()
+        {
+            AnswerContent = "";
+            IsCorrect = false;
+        }
     }
 }

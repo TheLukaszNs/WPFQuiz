@@ -28,17 +28,69 @@
             </Style.Resources>
         </Style>
     </Window.Resources>
-  <Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
 
-        <TextBlock 
-          HorizontalAlignment="Center" 
-          VerticalAlignment="Center"
-          FontSize="32"
-          FontWeight="Bold">Generator Quiz'u</TextBlock>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <local:EnforceTypeTextBox
+                  Margin="20,0"
+                  FontSize="18"
+                  FontWeight="Medium"
+                  VerticalAlignment="Center"
+                  TextAlignment="Right"
+                  DefaultBrush="#2ECC71"
+                  ErrorBrush="Red"
+                  Padding="5"
+                  x:Name="TextBox_TimeMinutes"
+                  Type="Integer"
+                />
+                <TextBlock 
+                  Grid.Column="1"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  FontSize="24"
+                  Foreground="#2ECC71"
+                  FontWeight="Bold">:</TextBlock>
+                <local:EnforceTypeTextBox
+                  Grid.Column="2"
+                  Margin="20,0"
+                  FontSize="18"
+                  FontWeight="Medium"
+                  VerticalAlignment="Center"
+                  DefaultBrush="#2ECC71"
+                  ErrorBrush="Red"
+                  Padding="5"
+                  x:Name="TextBox_TimeSeconds"
+                  Type="Integer"
+                />
+            </Grid>
+            <TextBox 
+            Background="Transparent"
+            VerticalAlignment="Center"
+            BorderThickness="0,0,0,2"
+            Padding="5"
+            BorderBrush="#2ECC71"
+            FontSize="18"
+            FontWeight="Medium"
+            x:Name="TextBox_Title"
+            Grid.Column="1"
+            Margin="20,0"/>
+        </Grid>
         <Grid 
           Grid.Row="1"
           >
@@ -52,12 +104,13 @@
               Margin="20, 0"
               >
                 <TextBlock FontSize="24" TextAlignment="Center" Margin="0,0,0,30">
-                  dodano 
-                  <TextBlock FontWeight="Bold">0</TextBlock>
-                  pytań
+                  dodano pytań -
+                  <TextBlock 
+                    FontWeight="Bold"
+                    Name="TextBlock_Count">0</TextBlock>
                 </TextBlock>
                 <StackPanel>
-                  <Button 
+                    <Button 
                     Style="{StaticResource RoundedButton}" 
                     Content="Dodaj"
                     Click="Button_Add_Click"/>
@@ -66,7 +119,8 @@
                     Style="{StaticResource RoundedButton}"
                     Content="Zapisz"
                     Background="#3498db"
-                    Grid.Row="2"/>
+                    Grid.Row="2"
+                    Click="Button_Save_Click"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel
@@ -81,10 +135,11 @@
                       Margin="0,0,0,15"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="463*" />
+                            <ColumnDefinition Width="55*"/>
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                      <TextBox 
+                        <TextBox 
                         Background="Transparent"
                         VerticalAlignment="Center"
                         BorderThickness="0,0,0,2"
@@ -92,9 +147,9 @@
                         BorderBrush="#2ECC71"
                         FontSize="18"
                         FontWeight="Medium"
-                        x:Name="TextBox_QuestionTitle"/>
-                      <TextBlock 
-                        Grid.Column="1"
+                        x:Name="TextBox_QuestionTitle" Grid.ColumnSpan="2"/>
+                        <TextBlock 
+                        Grid.Column="2"
                         VerticalAlignment="Center"
                         FontSize="18"
                         FontWeight="Medium"
@@ -102,11 +157,11 @@
                     </Grid>
                 </StackPanel>
                 <local:QuizAnswer Letter="A" x:Name="QuizAnswer_A" />
-              <local:QuizAnswer Letter="B" x:Name="QuizAnswer_B" />
-              <local:QuizAnswer Letter="C" x:Name="QuizAnswer_C" />
-              <local:QuizAnswer Letter="D" x:Name="QuizAnswer_D" />
+                <local:QuizAnswer Letter="B" x:Name="QuizAnswer_B" />
+                <local:QuizAnswer Letter="C" x:Name="QuizAnswer_C" />
+                <local:QuizAnswer Letter="D" x:Name="QuizAnswer_D" />
             </StackPanel>
         </Grid>
-        
+
     </Grid>
 </Window>

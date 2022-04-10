@@ -12,5 +12,7 @@ namespace CommonLibrary
 
         private List<Question> questions = new List<Question>();
         public List<Question> Questions { get => questions; set => questions = value; }
+
+        public double Duration { get; set; }
     }
 }
