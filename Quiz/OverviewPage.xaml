@@ -20,7 +20,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
 
-        <Style TargetType="local:BorderedTextBlock">
+        <Style TargetType="ListBoxItem">
             <Setter Property="Height" Value="62"/>
             <Setter Property="Margin" Value="0 5 0 5"/>
             <Setter Property="BorderThickness" Value="2"/>
@@ -35,7 +35,7 @@
             </Style.Resources>
         </Style>
     </Page.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
@@ -67,7 +67,7 @@
                 >
             </TextBlock>
 
-            <ItemsControl
+            <ListBox
                 Name="Summary"
                 Background="#ECF0F1"
                 BorderThickness="0"
@@ -75,7 +75,7 @@
                 Width="700"
                 MaxHeight="362"
                 >
-            </ItemsControl>
+            </ListBox>
 
             <Button
                 Width="189"

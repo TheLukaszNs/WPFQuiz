@@ -31,26 +31,27 @@ namespace QuizSolver
         {
             Result.Text = $"Wynik: {score}/{correctedCount}";
 
+            uint i = 1;
             foreach (Question q in quiz.Questions)
             {
-                Summary.Items.Add(new BorderedTextBlock
+                Summary.Items.Add(new ListBoxItem
                 {
-                    Value = $"Pytanie {Summary.Items.Count + 1}: {q.Content}",
+                    Content = $"Pytanie {i++}: {q.Content}",
                     FontWeight = FontWeights.Bold,
                     Margin = Summary.Items.Count > 0 ? new Thickness(0, 100, 0, 0) : new Thickness(0, 0, 0, 0)
                 });
 
                 foreach (Answer a in q.Answers)
-                    Summary.Items.Add(new BorderedTextBlock
+                    Summary.Items.Add(new ListBoxItem
                     {
-                        Value = a.Content,
-                        BorderColor = a.IsCorrect ? Brushes.Green : Brushes.Red,
-                        BackgroundColor = selectedAnswers.Contains(a) ?
+                        Content = a.Content,
+                        BorderBrush = a.IsCorrect ? Brushes.Green : Brushes.Red,
+                        Background = selectedAnswers.Contains(a) ?
                             a.IsCorrect ?
                             (Brush)new BrushConverter().ConvertFrom("#2ECC71") :
                             (Brush)new BrushConverter().ConvertFrom("#E74C3C") :
                             Brushes.Transparent,
-                        FontColor = selectedAnswers.Contains(a) ? Brushes.White : Brushes.Black
+                        Foreground = selectedAnswers.Contains(a) ? Brushes.White : Brushes.Black
                     });
             }
         }
