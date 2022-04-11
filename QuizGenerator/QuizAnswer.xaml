@@ -39,16 +39,17 @@
                 >
                     <TextBlock x:Name="TextBlock_Letter"></TextBlock>.
                 </TextBlock>
-              <TextBox 
-                Grid.Column="1" 
-                Background="Transparent"
+              <local:EnforceTypeTextBox
+                Grid.Column="1"
                 VerticalAlignment="Center"
-                BorderThickness="0,0,0,2"
                 Padding="5"
-                BorderBrush="#2ECC71"
+                DefaultBrush="#2ECC71"
+                ErrorBrush="Red"
                 FontSize="18"
                 FontWeight="Medium"
-                x:Name="TextBox_Content"/>
+                x:Name="TextBox_Content"
+                Required="True"
+                Type="Text"/>
             </Grid>
         </Border>
         <CheckBox 

@@ -49,5 +49,7 @@ namespace QuizGenerator
             AnswerContent = "";
             IsCorrect = false;
         }
+
+        public bool Validate() => TextBox_Content.Validate();
     }
 }

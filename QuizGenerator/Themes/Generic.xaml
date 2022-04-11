@@ -9,18 +9,27 @@
         <Setter Property="Template">
           <Setter.Value>
                 <ControlTemplate TargetType="local:EnforceTypeTextBox">
-                    <Border
-                      x:Name="PART_ContentHost"
-                      Background="Transparent"
-                      Padding="{TemplateBinding Padding}"
-                      BorderBrush="{TemplateBinding BorderBrush}"
-                      BorderThickness="0,0,0,2">
+                    <StackPanel>
+                        <Label 
+                          Content="{TemplateBinding Label}" 
+                          Visibility="{TemplateBinding Label, Converter={StaticResource StringToVisibilityConverter}}"
+                          HorizontalAlignment="{TemplateBinding TextAlignment}"
+                          FontSize="18"
+                          FontWeight="Bold"
+                          Margin="0,0,0,15"/>
+                        <Border
+                        x:Name="PART_ContentHost"
+                        Background="Transparent"
+                        Padding="{TemplateBinding Padding}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="0,0,0,2">
                         <Border.ToolTip>
-                            <ToolTip 
-                              Visibility="{TemplateBinding Error, Converter={StaticResource StringToVisibilityConverter}}"
-                              Content="{TemplateBinding Error}"/>
+                          <ToolTip 
+                            Visibility="{TemplateBinding Error, Converter={StaticResource StringToVisibilityConverter}}"
+                            Content="{TemplateBinding Error}"/>
                         </Border.ToolTip>
-                    </Border>
+                      </Border>
+                    </StackPanel>
                 </ControlTemplate>
           </Setter.Value>
         </Setter>

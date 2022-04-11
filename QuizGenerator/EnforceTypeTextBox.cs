@@ -25,6 +25,7 @@ namespace QuizGenerator
     public class EnforceTypeTextBox : TextBox
     {
         public TextBoxType Type { get; set; }
+        public bool Required { get; set; }
 
         public Brush ErrorBrush {
             get => (Brush)GetValue(ErrorBrushProperty);
@@ -40,6 +41,11 @@ namespace QuizGenerator
             get { return (string)GetValue(ErrorProperty); }
             set { SetValue(ErrorProperty, value); }
         }
+        public string Label
+        {
+            get { return (string)GetValue(LabelProperty); }
+            set { SetValue(LabelProperty, value); }
+        }
 
         static EnforceTypeTextBox()
         {
@@ -51,7 +57,7 @@ namespace QuizGenerator
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            SetValue(BorderBrushProperty, DefaultBrush);
+            BorderBrush = DefaultBrush;
         }
 
         private static void ValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -61,14 +67,14 @@ namespace QuizGenerator
             if(CheckType(instance, e.NewValue.ToString()))
             {
                 instance.Text = e.NewValue.ToString();
-                instance.SetValue(ErrorProperty, string.Empty);
-                instance.SetValue(BorderBrushProperty, instance.GetValue(DefaultBrushProperty));
+                instance.Error = string.Empty;
+                instance.BorderBrush = instance.DefaultBrush;
             }
             else
             {
                 instance.Text = e.OldValue.ToString();
-                instance.SetValue(ErrorProperty, "Wprowadzono nieprawidłowy typ.");
-                instance.SetValue(BorderBrushProperty, instance.GetValue(ErrorBrushProperty));
+                instance.Error = "Wprowadzono nieprawidłowy typ.";
+                instance.BorderBrush = instance.ErrorBrush;
             }
 
         }
@@ -89,6 +95,27 @@ namespace QuizGenerator
             }
         }
 
+        public bool Validate()
+        {
+            if (!CheckType(this, Text))
+            {
+                Error = "Wprowadzono nieprawidłowy typ.";
+                BorderBrush = ErrorBrush;
+                return false;
+            }
+
+            if (Required && string.IsNullOrEmpty(Text))
+            {
+                Error = "To pole jest wymagane.";
+                BorderBrush = ErrorBrush;
+                return false;
+            }
+
+            Error = string.Empty;
+            BorderBrush = DefaultBrush;
+            return true;
+        }
+
         public static readonly DependencyProperty ErrorBrushProperty =
             DependencyProperty.Register(nameof(ErrorBrush), typeof(Brush), typeof(EnforceTypeTextBox), new PropertyMetadata(Brushes.Red));
 
@@ -98,6 +125,7 @@ namespace QuizGenerator
         public static readonly DependencyProperty ErrorProperty =
             DependencyProperty.Register(nameof(Error), typeof(string), typeof(EnforceTypeTextBox), new PropertyMetadata(string.Empty));
 
-
+        public static readonly DependencyProperty LabelProperty =
+            DependencyProperty.Register(nameof(Label), typeof(string), typeof(EnforceTypeTextBox), new PropertyMetadata(string.Empty));
     }
 }

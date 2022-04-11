@@ -30,11 +30,11 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="10*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Grid Margin="0, 20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="3*" />
@@ -58,6 +58,8 @@
                   Padding="5"
                   x:Name="TextBox_TimeMinutes"
                   Type="Integer"
+                  Required="True"
+                  Label="Minuty"
                 />
                 <TextBlock 
                   Grid.Column="1"
@@ -65,7 +67,8 @@
                   HorizontalAlignment="Center"
                   FontSize="24"
                   Foreground="#2ECC71"
-                  FontWeight="Bold">:</TextBlock>
+                  FontWeight="Bold"
+                  Margin="0,30,0,0">:</TextBlock>
                 <local:EnforceTypeTextBox
                   Grid.Column="2"
                   Margin="20,0"
@@ -77,19 +80,23 @@
                   Padding="5"
                   x:Name="TextBox_TimeSeconds"
                   Type="Integer"
+                  Required="True"
+                  Label="Sekundy"
                 />
             </Grid>
-            <TextBox 
-            Background="Transparent"
+            <local:EnforceTypeTextBox 
             VerticalAlignment="Center"
-            BorderThickness="0,0,0,2"
             Padding="5"
-            BorderBrush="#2ECC71"
+            DefaultBrush="#2ECC71"
+            ErrorBrush="Red"
             FontSize="18"
             FontWeight="Medium"
             x:Name="TextBox_Title"
             Grid.Column="1"
-            Margin="20,0"/>
+            Margin="20,0"
+            Type="Text"
+            Required="True"
+            Label="Tytuł"/>
         </Grid>
         <Grid 
           Grid.Row="1"
@@ -128,29 +135,26 @@
               Margin="20, 0"
               Grid.Column="1">
                 <StackPanel Margin="0,0,0,20">
-                    <Label 
-                      Content="Pytanie" 
-                      FontSize="18"
-                      FontWeight="Bold"
-                      Margin="0,0,0,15"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="463*" />
-                            <ColumnDefinition Width="55*"/>
+                            <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBox 
-                        Background="Transparent"
+                        <local:EnforceTypeTextBox
                         VerticalAlignment="Center"
                         BorderThickness="0,0,0,2"
                         Padding="5"
-                        BorderBrush="#2ECC71"
+                        DefaultBrush="#2ECC71"
+                        ErrorBrush="Red"
                         FontSize="18"
                         FontWeight="Medium"
-                        x:Name="TextBox_QuestionTitle" Grid.ColumnSpan="2"/>
+                        x:Name="TextBox_QuestionTitle" 
+                        Label="Pytanie"
+                        Required="True"
+                        Type="Text"/>
                         <TextBlock 
                         Grid.Column="2"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Bottom"
                         FontSize="18"
                         FontWeight="Medium"
                         Margin="10,0,0,0">?</TextBlock>

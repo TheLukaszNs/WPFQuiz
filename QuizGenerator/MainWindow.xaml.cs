@@ -35,14 +35,27 @@ namespace QuizGenerator
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
+            if (!TextBox_QuestionTitle.Validate()) return;
+
             Question question = new Question();
             question.Content = TextBox_QuestionTitle.Text;
 
+            bool questionsReady = true;
             foreach (var quizAnswer in _answerComponents)
             {
-                question.Answers.Add(quizAnswer.ToAnswer());
-                quizAnswer.Reset();
+                if (!quizAnswer.Validate())
+                {
+                    questionsReady = false;
+                    continue;
+                }
             }
+
+            if (!questionsReady) return;
+            _answerComponents.ForEach((QuizAnswer qA) => {
+                question.Answers.Add(qA.ToAnswer());
+                qA.Reset();
+            });
+
 
             _quiz.Questions.Add(question);
 
@@ -52,13 +65,23 @@ namespace QuizGenerator
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
+            if(_quiz.Questions.Count == 0)
+            {
+                MessageBox.Show("Nie dodano pytań do Quizu!", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+
+            if (!(TextBox_TimeMinutes.Validate() & TextBox_TimeSeconds.Validate() & TextBox_Title.Validate()))
+                return;
+
+            string path = GetSavePath();
+            if (path == null) 
+                return;
+
             _quiz.Title = TextBox_Title.Text;
             _quiz.Duration = 60 * int.Parse(TextBox_TimeMinutes.Text) + int.Parse(TextBox_TimeSeconds.Text);
 
-            string path = GetSavePath();
-            if (path == null) return;
-
-            if (QuizData.SaveEncode(new JSONSerializer<Quiz>(), new OneToOneCoder(), _quiz, path))
+            if (QuizData.SaveEncode(new JSONSerializer<Quiz>(), new Base64Coder(), _quiz, path))
                 MessageBox.Show("Plik został zapisany!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("Wystąpił błąd zapisu!", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
