@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CommonLibrary;
 
 namespace QuizSolver
@@ -43,30 +33,28 @@ namespace QuizSolver
 
             foreach (Question q in quiz.Questions)
             {
-                Summary.Items.Add(new ListBoxItem
+                Summary.Items.Add(new BorderedTextBlock
                 {
-                    Content = q.Content,
+                    Value = $"Pytanie {Summary.Items.Count + 1}: {q.Content}",
+                    FontWeight = FontWeights.Bold,
                     Margin = Summary.Items.Count > 0 ? new Thickness(0, 100, 0, 0) : new Thickness(0, 0, 0, 0)
-                }); ;
+                });
 
                 foreach (Answer a in q.Answers)
-                    Summary.Items.Add(new ListBoxItem
-                    { 
-                        Content = a.Content,
-                        BorderBrush = a.IsCorrect ? Brushes.Green : Brushes.Red,
-                        Background = selectedAnswers.Contains(a) ?
-                            a.IsCorrect ? 
-                            (Brush) new BrushConverter().ConvertFrom("#2ECC71") : 
-                            (Brush) new BrushConverter().ConvertFrom("#E74C3C") : 
+                    Summary.Items.Add(new BorderedTextBlock
+                    {
+                        Value = a.Content,
+                        BorderColor = a.IsCorrect ? Brushes.Green : Brushes.Red,
+                        BackgroundColor = selectedAnswers.Contains(a) ?
+                            a.IsCorrect ?
+                            (Brush)new BrushConverter().ConvertFrom("#2ECC71") :
+                            (Brush)new BrushConverter().ConvertFrom("#E74C3C") :
                             Brushes.Transparent,
-                        Foreground = selectedAnswers.Contains(a) ? Brushes.White : Brushes.Black
+                        FontColor = selectedAnswers.Contains(a) ? Brushes.White : Brushes.Black
                     });
             }
         }
 
-        private void QuitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        private void QuitButton_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
     }
 }
