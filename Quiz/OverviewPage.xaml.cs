@@ -33,23 +33,24 @@ namespace QuizSolver
 
             foreach (Question q in quiz.Questions)
             {
-                Summary.Items.Add(new ListBoxItem
+                Summary.Items.Add(new BorderedTextBlock
                 {
-                    Content = q.Content,
+                    Value = $"Pytanie {Summary.Items.Count + 1}: {q.Content}",
+                    FontWeight = FontWeights.Bold,
                     Margin = Summary.Items.Count > 0 ? new Thickness(0, 100, 0, 0) : new Thickness(0, 0, 0, 0)
                 });
 
                 foreach (Answer a in q.Answers)
-                    Summary.Items.Add(new ListBoxItem
-                    { 
-                        Content = a.Content,
-                        BorderBrush = a.IsCorrect ? Brushes.Green : Brushes.Red,
-                        Background = selectedAnswers.Contains(a) ?
-                            a.IsCorrect ? 
-                            (Brush) new BrushConverter().ConvertFrom("#2ECC71") : 
-                            (Brush) new BrushConverter().ConvertFrom("#E74C3C") : 
+                    Summary.Items.Add(new BorderedTextBlock
+                    {
+                        Value = a.Content,
+                        BorderColor = a.IsCorrect ? Brushes.Green : Brushes.Red,
+                        BackgroundColor = selectedAnswers.Contains(a) ?
+                            a.IsCorrect ?
+                            (Brush)new BrushConverter().ConvertFrom("#2ECC71") :
+                            (Brush)new BrushConverter().ConvertFrom("#E74C3C") :
                             Brushes.Transparent,
-                        Foreground = selectedAnswers.Contains(a) ? Brushes.White : Brushes.Black
+                        FontColor = selectedAnswers.Contains(a) ? Brushes.White : Brushes.Black
                     });
             }
         }
