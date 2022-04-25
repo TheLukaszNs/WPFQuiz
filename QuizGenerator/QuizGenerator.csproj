@@ -85,6 +85,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditPage.xaml.cs">
+      <DependentUpon>EditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratorPage.xaml.cs">
+      <DependentUpon>GeneratorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StringToVisibilityConverter.cs" />
     <Compile Include="EnforceTypeTextBox.cs" />
     <Compile Include="QuizAnswer.xaml.cs">
@@ -93,6 +102,14 @@
     <Compile Include="StyledTextBox.xaml.cs">
       <DependentUpon>StyledTextBox.xaml</DependentUpon>
     </Compile>
+    <Page Include="EditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GeneratorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +123,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="QuizAnswer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
