@@ -10,8 +10,7 @@
       FontFamily="Roboto"
       WindowHeight="800" WindowWidth="960"
       ShowsNavigationUI="False">
-
-    <Page.Resources>
+  <Page.Resources>
         <DropShadowEffect 
           x:Key="DropShadow" 
           Direction="-90" 

@@ -18,17 +18,19 @@
                           FontWeight="Bold"
                           Margin="0,0,0,15"/>
                         <Border
-                        x:Name="PART_ContentHost"
-                        Background="Transparent"
-                        Padding="{TemplateBinding Padding}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="0,0,0,2">
-                        <Border.ToolTip>
-                          <ToolTip 
-                            Visibility="{TemplateBinding Error, Converter={StaticResource StringToVisibilityConverter}}"
-                            Content="{TemplateBinding Error}"/>
-                        </Border.ToolTip>
-                      </Border>
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="0,0,0,2">
+                          <ScrollViewer
+                            x:Name="PART_ContentHost"
+                            Background="Transparent"
+                            Padding="{TemplateBinding Padding}">
+                            <ScrollViewer.ToolTip>
+                              <ToolTip 
+                                Visibility="{TemplateBinding Error, Converter={StaticResource StringToVisibilityConverter}}"
+                                Content="{TemplateBinding Error}"/>
+                            </ScrollViewer.ToolTip>
+                          </ScrollViewer>
+                        </Border>
                     </StackPanel>
                 </ControlTemplate>
           </Setter.Value>

@@ -8,12 +8,11 @@
         Background="#ECF0F1"
         FontFamily="Roboto"
         Title="Quiz"
-        Height="800" Width="960">
-    <Grid>
-        <Frame
-          Width="960"
-          Height="800"
-          Source="StartPage.xaml"
-          NavigationUIVisibility="Hidden" />
-    </Grid>
+        Height="800" Width="960"
+        ResizeMode="NoResize">
+  <Frame
+    Width="960"
+    Height="800"
+    Source="StartPage.xaml"
+    NavigationUIVisibility="Hidden" />
 </Window>
