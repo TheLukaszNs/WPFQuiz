@@ -36,7 +36,7 @@ namespace QuizSolver
             {
                 Summary.Items.Add(new ListBoxItem
                 {
-                    Content = $"Pytanie {i++}: {q.Content}",
+                    Content = $"Pytanie {i++}: {q.Content}?",
                     FontWeight = FontWeights.Bold,
                     Margin = Summary.Items.Count > 0 ? new Thickness(0, 100, 0, 0) : new Thickness(0, 0, 0, 0)
                 });

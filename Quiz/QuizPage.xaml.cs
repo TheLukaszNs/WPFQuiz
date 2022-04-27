@@ -65,7 +65,7 @@ namespace QuizSolver
             Answers.Items.Clear();
 
             CurrentQuestion.Text = $"{_CurrentQuestion + 1}/{quiz.Questions.Count}";
-            Content.Text = quiz.Questions[_CurrentQuestion].Content;
+            Content.Text = quiz.Questions[_CurrentQuestion].Content + "?";
 
             foreach (Answer a in quiz.Questions[_CurrentQuestion].Answers)
             { 
