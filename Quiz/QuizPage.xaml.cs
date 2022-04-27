@@ -48,7 +48,10 @@ namespace QuizSolver
 
         private void TimerTick(object sender, EventArgs e)
         {
-            Timer.Text = time.ToString("mm\\:ss");
+            if (time.Hours > 0)
+                Timer.Text = time.ToString();
+            else
+                Timer.Text = time.ToString("mm\\:ss");
 
             if (time == TimeSpan.Zero)
             { 
