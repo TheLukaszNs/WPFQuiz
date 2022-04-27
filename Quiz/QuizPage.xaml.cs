@@ -104,7 +104,10 @@ namespace QuizSolver
             }
 
             else
+            {
+                timer.Stop();
                 ChangeScreen();
+            }
         }
 
         private void ChangeScreen() => NavigationService.Navigate(new OverviewPage(quiz, _Score, correctedCount, selectedAnswers));
